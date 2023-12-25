@@ -1,10 +1,10 @@
 import React from 'react'
-import './css/login.css'
+import './css/register.css'
 import { Link } from 'react-router-dom'
 
 const Register = () => {
   return (
-    <div>
+    <div className='reg'>
         <h1>Register</h1>
         <form>
             <label htmlFor="username">Username</label>
