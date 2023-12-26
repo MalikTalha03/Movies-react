@@ -7,7 +7,7 @@ const Register = () => {
   if (document.cookie.split(';').filter((item) => item.includes('auth-token=')).length) {
     window.location.href = '/movies';
   }
-  const api = 'http://localhost:8086/api/auth/register'
+  const api = 'https://movies-api-ashen-seven.vercel.app/api/auth/register'
   function register() {
     const name = document.getElementById('username').value
     const password = document.getElementById('password').value
