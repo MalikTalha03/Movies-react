@@ -2,14 +2,32 @@ import React, { useEffect, useState } from 'react';
 import './css/movies.css';
 
 const Movies = () => {
+  if (!document.cookie.split(';').filter((item) => item.includes('auth-token=')).length) {
+    window.location.href = '/login';
+  }
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
+      let cookieval = document.cookie.split(';');
+      let cookies = {}
+
+      for (let i=0; i<cookieval.length; i++) {
+        let cookie = cookieval[i].split('=');
+        cookies[cookie[0].trim()] = cookie[1];
+      }
+      let authcookie = cookies['auth-token']; 
       try {
-        const response = await fetch('http://localhost:8086/api/movies');
+        const response = await fetch('http://localhost:8086/api/movies',
+        {
+          method: 'GET',
+          headers: {
+            'Authorization':  authcookie,
+          },
+        }
+        
+        );
         const data = await response.json();
         setMovies(data);
-        console.log(data)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
@@ -44,7 +62,6 @@ const Movies = () => {
   return (
     <div className="movie">
       <h1>Movies</h1>
-
       <div className="movie-container">
         {movies.map((movie) => (
           <div className="movie-card" key={movie._id}>
