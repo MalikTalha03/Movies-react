@@ -18,7 +18,7 @@ const Movies = () => {
       }
       let authcookie = cookies['auth-token']; 
       try {
-        const response = await fetch('http://localhost:8086/api/movies',
+        const response = await fetch('https://movies-api-ashen-seven.vercel.app/api/movies',
         {
           method: 'GET',
           headers: {
