@@ -9,7 +9,7 @@ const Login = () => {
   if (document.cookie.split(';').filter((item) => item.includes('auth-token=')).length) {
     window.location.href = '/movies';
   }
-const api = 'http://localhost:8086/api/auth/login'
+const api = 'https://movies-api-ashen-seven.vercel.app/api/auth/login'
   async function login(event) {
     event.preventDefault();
     try {
