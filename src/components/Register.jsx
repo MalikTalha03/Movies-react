@@ -3,6 +3,9 @@ import './css/register.css'
 import { Link } from 'react-router-dom'
 
 const Register = () => {
+  if (document.cookie.split(';').filter((item) => item.includes('auth-token=')).length) {
+    window.location.href = '/movies';
+  }
   const api = 'http://localhost:8086/api/auth/register'
   function register() {
     const name = document.getElementById('username').value
