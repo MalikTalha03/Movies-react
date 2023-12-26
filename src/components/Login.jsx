@@ -5,8 +5,9 @@ import Cookies from 'universal-cookie'
 
 
 const Login = () => {
-
-  
+  if (document.cookie.split(';').filter((item) => item.includes('auth-token=')).length) {
+    window.location.href = '/movies';
+  }
 const api = 'http://localhost:8086/api/auth/login'
   async function login(event) {
     event.preventDefault();
@@ -24,10 +25,9 @@ const api = 'http://localhost:8086/api/auth/login'
       });
 
       if (response.ok) {
-        console.log('Login successful');
         const data = await response.json();
         new Cookies().set('auth-token', data.token);
-        
+        window.location.href = '/movies';
       } else {
         console.log('Login failed');
       }
