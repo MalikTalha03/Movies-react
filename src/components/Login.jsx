@@ -2,6 +2,7 @@ import React from 'react'
 import './css/login.css'
 import { Link } from 'react-router-dom'
 import Cookies from 'universal-cookie'
+import Topbar from './Topbar'
 
 
 const Login = () => {
@@ -36,18 +37,21 @@ const api = 'http://localhost:8086/api/auth/login'
     }
   }
   return (
-    <div className='login'>
-        <h1>Login</h1>
-        <form>
-            <label htmlFor="email">Email</label>
-            <input type="email" id="email" name="email" />
-            <label htmlFor="password">Password</label>
-            <input type="password" id="password" name="password" />
-            <button type="submit" onClick={(e) => login(e)}>Login</button>
-        </form>
-        <p>Don't have an Account yet? 
-            <Link to='/signup'> Sign Up</Link>
-        </p>
+    <div>
+        <Topbar />
+      <div className='login'>
+          <h1>Login</h1>
+          <form>
+              <label htmlFor="email">Email</label>
+              <input type="email" id="email" name="email" />
+              <label htmlFor="password">Password</label>
+              <input type="password" id="password" name="password" />
+              <button type="submit" onClick={(e) => login(e)}>Login</button>
+          </form>
+          <p>Don't have an Account yet? 
+              <Link to='/signup'> Sign Up</Link>
+          </p>
+      </div>
     </div>
   )
 }
