@@ -3,18 +3,18 @@ import './css/movies.css';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch('https://movies-api-dh9c.vercel.app/api/movies/');
+        const response = await fetch('http://localhost:8086/api/movies');
         const data = await response.json();
         setMovies(data);
+        console.log(data)
       } catch (error) {
         console.error('Error fetching data:', error);
       }
     };
-
+  
     fetchData();
   }, []);
 
