@@ -1,6 +1,9 @@
 import React from 'react'
 import './css/topbar.css'
 import { useEffect } from 'react'
+import AddMovie from './AddMovie'
+import Popup from 'reactjs-popup'
+
 
 const Topbar = () => {
     useEffect(() => {
@@ -24,6 +27,7 @@ const Topbar = () => {
             <button onClick = {() => window.location.href = '/signup'}> Sign Up </button>
         </div>
         <div className="logged" id='logged'>
+        <Popup trigger={<button> Add Movie</button>} position={"bottom center"}><AddMovie /></Popup>
             <button onClick={logout}> Logout </button>
         </div>
     </div>
