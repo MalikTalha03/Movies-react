@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './css/movies.css';
+import Topbar from './Topbar';
 
 const Movies = () => {
   if (!document.cookie.split(';').filter((item) => item.includes('auth-token=')).length) {
@@ -60,18 +61,20 @@ const Movies = () => {
   }, [movies]);
 
   return (
-    <div className="movie">
-      <h1>Movies</h1>
-      <div className="movie-container">
-        {movies.map((movie) => (
-          <div className="movie-card" key={movie._id}>
-            <img src={movie.imgSrc} alt={movie.name} />
-            <h2>{movie.name}</h2>
-            <p>Year: {movie.year}</p>
-            <p>Director: {movie.producer}</p>
-            <p>Rating: {movie.rating}</p>
-          </div>
-        ))}
+    <div>
+      <Topbar />
+      <div className="movie">
+        <div className="movie-container">
+          {movies.map((movie) => (
+            <div className="movie-card" key={movie._id}>
+              <img src={movie.imgSrc} alt={movie.name} />
+              <h2>{movie.name}</h2>
+              <p>Year: {movie.year}</p>
+              <p>Director: {movie.producer}</p>
+              <p>Rating: {movie.rating}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );
