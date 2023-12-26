@@ -1,20 +1,30 @@
 import React from 'react'
 import './css/topbar.css'
+import { useEffect } from 'react'
 
 const Topbar = () => {
-    if (document.cookie.split(';').filter((item) => item.includes('auth-token=')).length) {
-        document.getElementById("initial").style.display = "none";
-        document.getElementById("logged").style.display = "block";
+    useEffect(() => {
+        if (document.cookie.split(';').filter((item) => item.includes('auth-token=')).length) {
+        document.getElementById('initial').style.display = 'none';
+        document.getElementById('logged').style.display = 'block';
+        } else {
+        document.getElementById('initial').style.display = 'flex';
+        document.getElementById('logged').style.display = 'none';
+        }
+    }, [])
+    function logout() {
+        document.cookie = 'auth-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
+        window.location.href = '/';
     }
   return (
-    <div>
+    <div className='main'>
         <h1>Movies Hub</h1>
-        <div id = "initial">
-            <button> Register </button>
-            <button> Login </button>
+        <div className='init' id = "initial">
+            <button onClick = {() => window.location.href = '/login'}> Login </button>
+            <button onClick = {() => window.location.href = '/signup'}> Sign Up </button>
         </div>
-        <div id='logged'>
-            <button> Logout </button>
+        <div className="logged" id='logged'>
+            <button onClick={logout}> Logout </button>
         </div>
     </div>
   )
