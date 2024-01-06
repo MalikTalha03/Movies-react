@@ -8,14 +8,15 @@ import Movies from './components/Movies';
 function App() {
   return (
     <>
-      <BrowserRouter>
+    <Movies />
+      /*<BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/signup" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/movies" element={<Movies />} />
         </Routes>
-      </BrowserRouter>
+      </BrowserRouter>*/
     </>
   );
 }
