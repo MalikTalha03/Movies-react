@@ -3,27 +3,15 @@ import './css/movies.css';
 import Topbar from './Topbar';
 
 const Movies = () => {
-  if (!document.cookie.split(';').filter((item) => item.includes('auth-token=')).length) {
-    window.location.href = '/login';
-  }
+  
   const [movies, setMovies] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
-      let cookieval = document.cookie.split(';');
-      let cookies = {}
-
-      for (let i=0; i<cookieval.length; i++) {
-        let cookie = cookieval[i].split('=');
-        cookies[cookie[0].trim()] = cookie[1];
-      }
-      let authcookie = cookies['auth-token']; 
+      
       try {
         const response = await fetch('https://movies-api-ashen-seven.vercel.app/api/movies',
         {
           method: 'GET',
-          headers: {
-            'Authorization':  authcookie,
-          },
         }
         
         );
